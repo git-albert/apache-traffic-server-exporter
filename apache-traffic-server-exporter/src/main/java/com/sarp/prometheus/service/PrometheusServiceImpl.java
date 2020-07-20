@@ -35,30 +35,34 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
         GlobalMetrics globalMetrics = this.getAtsMetrics();
 
         //main metrics
-
         managerStartTime.set(globalMetrics.getManagerStartTime());
         proxyCacheReadyTime.set(globalMetrics.getProxyCacheReadyTime());
         proxyRestartCount.set(globalMetrics.getProxyRestartCount());
         proxyStartTime.set(globalMetrics.getProxyStartTime());
         proxyStopTime.set(globalMetrics.getProxyStopTime());
+        globalMetrics.setThroughput(globalMetrics.getKbReadPerSec() + globalMetrics.getKbWritePerSec());
         gaugeThroughput.set(globalMetrics.getThroughput());
         gaugeConcurrentClientCount.set(globalMetrics.getConcurrentClientCount());
+        gaugeConcurrentActiveClientCount.set(globalMetrics.getConcurrentActiveClientCount());
 
         //total cache
-
         gaugeCacheBytesTotal.set(globalMetrics.getCacheBytesTotal());
         gaugeCacheBytesUsed.set(globalMetrics.getCacheBytesUsed());
         gaugeCacheBytesFree.set(globalMetrics.getCacheBytesFree());
         gaugeCacheTotalHits.set(globalMetrics.getCacheTotalHits());
         gaugeCacheTotalMisses.set(globalMetrics.getCacheTotalMisses());
+        globalMetrics.setCacheHitRatio((double)globalMetrics.getCacheTotalHits()/((double)globalMetrics.getCacheTotalHits()+(double)globalMetrics.getCacheTotalMisses()));
         gaugeCacheHitRatio.set(globalMetrics.getCacheHitRatio());
 
         //ram cache
-
+        gaugeTotalHitsBytes.set(globalMetrics.getTotalHitsBytes());
+        gaugeTotalMissesBytes.set(globalMetrics.getTotalMissesBytes());
+        gaugeTotalBytes.set(globalMetrics.getTotalBytes());
         gaugeRamCacheTotalBytes.set(globalMetrics.getRamCacheTotalBytes());
         gaugeRamCacheBytesUsed.set(globalMetrics.getRamCacheUsedBytes());
         gaugeCacheRamHits.set(globalMetrics.getRamCacheHits());
         gaugeCacheRamMisses.set(globalMetrics.getRamCacheMisses());
+        globalMetrics.setRamCacheHitRatio(globalMetrics.getRamCacheHits()/(globalMetrics.getRamCacheHits()+globalMetrics.getRamCacheMisses()));
         gaugeRamCacheHitRatio.set(globalMetrics.getRamCacheHitRatio());
 
         logger.info(globalMetrics.toString());
