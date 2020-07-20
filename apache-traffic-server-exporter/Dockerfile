@@ -1,6 +1,8 @@
 FROM  java:8 
 
 # Install maven
+RUN rm /etc/apt/sources.list.d/jessie-backports.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
 RUN apt-get update  
 RUN apt-get install -y maven
 
