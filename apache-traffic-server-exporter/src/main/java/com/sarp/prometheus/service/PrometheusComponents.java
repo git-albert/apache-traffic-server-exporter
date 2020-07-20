@@ -43,8 +43,27 @@ public abstract class PrometheusComponents {
             .help("proxy node current client connections")
             .register();
 
-    //total cache
+    protected final Gauge gaugeConcurrentActiveClientCount = Gauge.build()
+            .name("proxy_node_current_active_client_connections")
+            .help("proxy node current active client connections")
+            .register();
 
+    //total cache
+    protected final Gauge gaugeTotalHitsBytes = Gauge.build()
+            .name("proxy_process_cache_total_hits_bytes")
+            .help("proxy process cache total hits bytes")
+            .register();
+    
+    protected final Gauge gaugeTotalMissesBytes = Gauge.build()
+            .name("proxy_process_cache_total_misses_bytes")
+            .help("proxy process cache total misses bytes")
+            .register();
+    
+    protected final Gauge gaugeTotalBytes = Gauge.build()
+            .name("proxy_process_cache_total_bytes")
+            .help("proxy process cache total bytes")
+            .register();
+    
     protected final Gauge gaugeCacheBytesTotal = Gauge.build()
             .name("proxy_process_cache_bytes_total")
             .help("proxy node cache bytes total")
