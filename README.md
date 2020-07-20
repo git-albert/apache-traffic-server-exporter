@@ -1,5 +1,10 @@
 [![Build Status](https://travis-ci.org/buraksarp/apache-traffic-server-exporter.svg?branch=master)](https://travis-ci.org/buraksarp/apache-traffic-server-exporter)
 
+Fixes
+=========================
+Fixed metrics for ATS v8.0.x and above
+Added new dashboard for Grafana
+
 Apache Traffic Server Exporter for Prometheus TSDB.
 =========================
 
@@ -10,7 +15,7 @@ Building Containers
 
 Nothing special if you already have Docker installed. 
 
-    $ git clone https://github.com/buraksarp/apache-traffic-server-exporter.git
+    $ git clone https://github.com/git-albert/apache-traffic-server-exporter.git
     $ cd apache-traffic-server-exporter
 
 Edit following file, set the public ip or address of your ATS Edge node;
@@ -40,13 +45,13 @@ Install grafana dashboard template for prometheus - [https://grafana.com/dashboa
 ### create data source
 
 
-    Name   : edge-data (or your favourite data source name)
+    Name   : ats-data (or your favourite data source name)
     Type   : prometheus    
     URL    : http://prometheus:9090
-    Access : proxy
+    Access : browser
     leave the other fields default, click on 'Save & Test'
 
-![Alt text](docs/new-datasource.png?raw=true "New data source")
+![Alt text](docs/datasource-configuration.png?raw=true "New data source")
 
 ### import dashboard
 
