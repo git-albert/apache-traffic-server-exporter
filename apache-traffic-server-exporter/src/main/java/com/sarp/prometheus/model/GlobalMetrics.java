@@ -2,6 +2,7 @@ package com.sarp.prometheus.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -9,6 +10,7 @@ import lombok.ToString;
  */
 
 @Getter
+@Setter
 @ToString
 public class GlobalMetrics {
 
@@ -29,10 +31,26 @@ public class GlobalMetrics {
     @JsonProperty("proxy.node.restarts.proxy.restart_count")
     private long proxyRestartCount;
 
-    @JsonProperty("proxy.node.http.throughput")
+    @JsonProperty("proxy.process.cache.KB_read_per_sec")
+    private double kbReadPerSec;
+
+    @JsonProperty("proxy.process.cache.KB_write_per_sec")
+    private double kbWritePerSec;
+
+    @JsonProperty("proxy.process.cache_total_hits_bytes")
+    private double totalHitsBytes;
+
+    @JsonProperty("proxy.process.cache_total_misses_bytes")
+    private double totalMissesBytes;
+
+    @JsonProperty("proxy.process.cache_total_bytes")
+    private double totalBytes;
+
+    //@JsonProperty("proxy.process.http.user_agent_speed_bytes_per_sec_100")
     private double throughput;
 
-    @JsonProperty("proxy.node.current_client_connections")
+//    @JsonProperty("proxy.process.http.current_client_connections")
+    @JsonProperty("proxy.process.http.current_active_client_connections")
     private int concurrentClientCount;
 
     //total cache
@@ -46,10 +64,10 @@ public class GlobalMetrics {
     @JsonProperty("proxy.node.cache.bytes_free")
     private long cacheBytesFree;
 
-    @JsonProperty("proxy.node.cache_total_hits")
+    @JsonProperty("proxy.process.cache_total_hits")
     private long cacheTotalHits;
 
-    @JsonProperty("proxy.node.cache_total_misses")
+    @JsonProperty("proxy.process.cache_total_misses")
     private long cacheTotalMisses;
 
     @JsonProperty("proxy.node.cache_hit_ratio") // both ram and disk
@@ -71,5 +89,4 @@ public class GlobalMetrics {
 
     @JsonProperty("proxy.node.cache_hit_mem_ratio")
     private double ramCacheHitRatio;
-
 }
