@@ -40,7 +40,7 @@ go to grafana UI: [http://localhost:3000](http://localhost:3000)
 
 Default username & password : admin
 
-Install grafana dashboard template for prometheus - [https://grafana.com/dashboards/2914](https://grafana.com/dashboards/2914)
+Install grafana dashboard template for prometheus - [https://grafana.com/grafana/dashboards/12687](https://grafana.com/grafana/dashboards/12687)
 
 ### create data source
 
@@ -55,10 +55,10 @@ Install grafana dashboard template for prometheus - [https://grafana.com/dashboa
 
 ### import dashboard
 
-Paste following dashboard url https://grafana.com/dashboards/2914 in, and the dashboard will automatically be imported. Then just select the datasource (edge-data) which has just been created in previous step. 
+Paste following dashboard url https://grafana.com/grafana/dashboards/12687 in, and the dashboard will automatically be imported. Then just select the datasource (edge-data) which has just been created in previous step. 
 
-    Grafana.com Dashboard   : https://grafana.com/dashboards/2914
-    prometheus              : edge-data (or the one you have created)
+    Grafana.com Dashboard   : https://grafana.com/grafana/dashboards/12687
+    prometheus              : ats-data (or the one you have created)
     click Import 
 
 ![Alt text](docs/import-dashboard.png?raw=true "Import dashboard")
